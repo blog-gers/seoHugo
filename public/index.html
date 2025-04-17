@@ -64,6 +64,8 @@
 
     <link rel="stylesheet" href="/css/search.css">
 
+    <link rel="stylesheet" href="/css/search-overlay.css">
+
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -133,12 +135,25 @@
 
     
     <div id="search-overlay" class="search-overlay">
-        <div class="container">
+        <div class="search-container">
+            <div class="search-header">
+                <h3 class="search-title">Search</h3>
+                <button id="close-search" class="close-search">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
             <form action="//localhost:5000/search" class="search-form">
-                <input type="search" name="q" placeholder="Search..." required>
-                <button type="submit"><i data-feather="search"></i></button>
+                <input type="search" name="q" placeholder="Type to search..." required>
             </form>
-            <button id="close-search" class="close-search"><i data-feather="x"></i></button>
+            <div class="search-footer">
+                Press ESC to close search
+                <div class="search-keyboard-shortcuts">
+                    <span class="key">ESC</span>
+                    <span>to close</span>
+                    <span class="key">↵</span>
+                    <span>to search</span>
+                </div>
+            </div>
         </div>
     </div>
 
