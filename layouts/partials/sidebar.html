@@ -49,7 +49,7 @@
                     </a>
                     {{ else }}
                     <a href="{{ .Permalink }}">
-                        <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634" alt="{{ .Title }}" class="img-fluid lazy-load">
+                        <img data-src="/img/post-placeholder.svg" alt="{{ .Title }}" class="img-fluid lazy-load">
                     </a>
                     {{ end }}
                 </div>
@@ -86,7 +86,7 @@
         <div class="widget-content">
             <div class="recent-comment">
                 <div class="comment-author">
-                    <img src="https://via.placeholder.com/50" alt="Jenny Richards" class="rounded-circle">
+                    <img data-src="/img/user-avatar-1.svg" alt="Jenny Richards" class="rounded-circle lazy-load">
                     <span>Jenny Richards</span>
                 </div>
                 <p class="comment-excerpt">Lorem ipsum is simply dummy text of the printing and typesetting industry...</p>
@@ -94,7 +94,7 @@
             </div>
             <div class="recent-comment">
                 <div class="comment-author">
-                    <img src="https://via.placeholder.com/50" alt="Anonymous" class="rounded-circle">
+                    <img data-src="/img/user-avatar-2.svg" alt="Anonymous" class="rounded-circle lazy-load">
                     <span>Anonymous</span>
                 </div>
                 <p class="comment-excerpt">The generated Lorem Ipsum is therefore always free from repetition...</p>
