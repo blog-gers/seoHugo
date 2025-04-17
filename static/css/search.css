@@ -1,0 +1,248 @@
+/* Professional Search Styles */
+.search-page {
+    margin-bottom: 40px;
+}
+
+.search-title {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: var(--dark-color);
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-group label {
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+
+.search-results {
+    min-height: 200px;
+}
+
+.search-result {
+    display: flex;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.search-result:last-child {
+    border-bottom: none;
+}
+
+.search-result-image {
+    flex: 0 0 220px;
+    margin-right: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-result-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.search-result:hover .search-result-image img {
+    transform: scale(1.05);
+}
+
+.search-result-content {
+    flex-grow: 1;
+}
+
+.search-result-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.search-result-title a {
+    color: var(--dark-color);
+    transition: color 0.3s ease;
+}
+
+.search-result-title a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.search-result-meta {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.search-result-meta span {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.search-result-meta svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.search-result-summary {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.search-loader {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.search-loader p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.search-placeholder,
+.search-no-results {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.search-illustration,
+.no-results-illustration {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.search-placeholder p,
+.search-no-results p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.search-no-results h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+/* Highlighted search terms */
+.search-highlight {
+    background-color: rgba(255, 255, 0, 0.3);
+    padding: 2px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .search-filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .filter-select {
+        width: 100%;
+    }
+    
+    .search-result {
+        flex-direction: column;
+    }
+    
+    .search-result-image {
+        flex: 0 0 auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    
+    .search-result-title {
+        font-size: 1.2rem;
+    }
+}
