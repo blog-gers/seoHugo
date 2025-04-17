@@ -1,0 +1,313 @@
+{{ define "main" }}
+<div class="search-page">
+    <h1 class="search-title">Search Results</h1>
+    
+    <div class="search-container">
+        <div class="search-input-container">
+            <input 
+                type="text" 
+                id="search-input" 
+                class="search-input" 
+                placeholder="Type to search..." 
+                autocomplete="off"
+            >
+            <i data-feather="search" class="search-icon"></i>
+        </div>
+
+        <div class="search-filters">
+            <div class="filter-group">
+                <label>Filter by Category:</label>
+                <select id="category-filter" class="filter-select">
+                    <option value="">All Categories</option>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <option value="{{ $name | urlize }}">{{ $name }} ({{ len $taxonomy }})</option>
+                    {{ end }}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort by:</label>
+                <select id="sort-results" class="filter-select">
+                    <option value="relevance">Relevance</option>
+                    <option value="date-desc">Date (Newest First)</option>
+                    <option value="date-asc">Date (Oldest First)</option>
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="search-results" class="search-results">
+            <div class="search-placeholder">
+                <img src="/img/search-illustration.svg" alt="Search Illustration" class="search-illustration">
+                <p>Enter a search term above to find content</p>
+            </div>
+        </div>
+        
+        <div class="search-loader">
+            <div class="loader-spinner"></div>
+            <p>Searching...</p>
+        </div>
+        
+        <div class="search-no-results">
+            <img src="/img/no-results.svg" alt="No Results" class="no-results-illustration">
+            <h3>No results found</h3>
+            <p>Try different keywords or remove filters</p>
+        </div>
+        
+        <template id="search-result-template">
+            <article class="search-result">
+                <div class="search-result-image">
+                    <a href="${link}">
+                        <img data-src="${image}" alt="${title}" class="img-fluid lazy-load">
+                    </a>
+                </div>
+                <div class="search-result-content">
+                    <h2 class="search-result-title">
+                        <a href="${link}">${title}</a>
+                    </h2>
+                    <div class="search-result-meta">
+                        <span class="search-result-date">
+                            <i data-feather="calendar"></i> ${date}
+                        </span>
+                        <span class="search-result-author">
+                            <i data-feather="user"></i> ${author}
+                        </span>
+                        <span class="search-result-category">
+                            <i data-feather="folder"></i> ${categories}
+                        </span>
+                    </div>
+                    <div class="search-result-summary">
+                        ${summary}
+                    </div>
+                    <a href="${link}" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+                </div>
+            </article>
+        </template>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchPlaceholder = document.querySelector('.search-placeholder');
+    const searchLoader = document.querySelector('.search-loader');
+    const searchNoResults = document.querySelector('.search-no-results');
+    const resultTemplate = document.getElementById('search-result-template').innerHTML;
+    const categoryFilter = document.getElementById('category-filter');
+    const sortResults = document.getElementById('sort-results');
+    
+    let searchIndex = [];
+    let fuseInstance = null;
+    
+    // Get query parameter from URL if it exists
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('q');
+    
+    // Set input value if query parameter exists
+    if (queryParam) {
+        searchInput.value = queryParam;
+    }
+    
+    // Hide the results initially
+    searchPlaceholder.style.display = queryParam ? 'none' : 'flex';
+    searchLoader.style.display = queryParam ? 'flex' : 'none';
+    searchNoResults.style.display = 'none';
+    
+    // Fetch the search index
+    fetch('/index.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            searchIndex = data.items;
+            
+            // Initialize Fuse.js
+            fuseInstance = new Fuse(searchIndex, {
+                keys: [
+                    { name: 'title', weight: 0.7 },
+                    { name: 'summary', weight: 0.3 },
+                    { name: 'tags', weight: 0.2 },
+                    { name: 'categories', weight: 0.2 },
+                    { name: 'content_html', weight: 0.1 }
+                ],
+                includeScore: true,
+                threshold: 0.3,
+                distance: 100,
+                useExtendedSearch: true
+            });
+            
+            // Search if query parameter exists
+            if (queryParam) {
+                performSearch(queryParam);
+            } else {
+                searchLoader.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching search index:', error);
+            searchLoader.style.display = 'none';
+            searchPlaceholder.innerHTML = '<p>Error loading search index. Please try again later.</p>';
+        });
+    
+    // Search input event
+    let debounceTimer;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        const query = this.value.trim();
+        
+        // Show placeholder if query is empty
+        if (query === '') {
+            searchResults.innerHTML = '';
+            searchPlaceholder.style.display = 'flex';
+            searchNoResults.style.display = 'none';
+            return;
+        }
+        
+        // Show loader
+        searchLoader.style.display = 'flex';
+        searchPlaceholder.style.display = 'none';
+        searchNoResults.style.display = 'none';
+        
+        // Update URL without reloading the page
+        const url = new URL(window.location);
+        url.searchParams.set('q', query);
+        window.history.pushState({}, '', url);
+        
+        // Debounce search to avoid unnecessary processing
+        debounceTimer = setTimeout(() => {
+            performSearch(query);
+        }, 300);
+    });
+    
+    // Category filter event
+    categoryFilter.addEventListener('change', function() {
+        const query = searchInput.value.trim();
+        if (query !== '') {
+            performSearch(query);
+        }
+    });
+    
+    // Sort results event
+    sortResults.addEventListener('change', function() {
+        const query = searchInput.value.trim();
+        if (query !== '') {
+            performSearch(query);
+        }
+    });
+    
+    // Perform search with filters and sorting
+    function performSearch(query) {
+        if (!fuseInstance) return;
+        
+        // Perform the search
+        let results = fuseInstance.search(query);
+        
+        // Apply category filter if selected
+        const selectedCategory = categoryFilter.value;
+        if (selectedCategory) {
+            results = results.filter(result => {
+                if (!result.item.categories) return false;
+                return result.item.categories.some(category => 
+                    category.toLowerCase() === selectedCategory.toLowerCase()
+                );
+            });
+        }
+        
+        // Apply sorting
+        const sortBy = sortResults.value;
+        if (sortBy !== 'relevance') {
+            results.sort((a, b) => {
+                switch(sortBy) {
+                    case 'date-desc':
+                        return new Date(b.item.date_published) - new Date(a.item.date_published);
+                    case 'date-asc':
+                        return new Date(a.item.date_published) - new Date(b.item.date_published);
+                    case 'title-asc':
+                        return a.item.title.localeCompare(b.item.title);
+                    case 'title-desc':
+                        return b.item.title.localeCompare(a.item.title);
+                    default:
+                        return 0;
+                }
+            });
+        }
+        
+        // Hide loader
+        searchLoader.style.display = 'none';
+        
+        // Display results or no results message
+        if (results.length > 0) {
+            displayResults(results);
+            searchNoResults.style.display = 'none';
+        } else {
+            searchResults.innerHTML = '';
+            searchNoResults.style.display = 'flex';
+        }
+    }
+    
+    // Display search results
+    function displayResults(results) {
+        searchResults.innerHTML = '';
+        
+        results.forEach(result => {
+            const item = result.item;
+            
+            // Format the date
+            const publishDate = new Date(item.date_published);
+            const formattedDate = publishDate.toLocaleDateString('en-US', {
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            });
+            
+            // Create result HTML using template
+            let resultHTML = resultTemplate
+                .replace(/\${link}/g, item.url)
+                .replace(/\${title}/g, item.title)
+                .replace(/\${date}/g, formattedDate)
+                .replace(/\${author}/g, item.author || 'Unknown')
+                .replace(/\${summary}/g, item.summary)
+                .replace(/\${categories}/g, (item.categories || []).join(', '));
+            
+            // Set image
+            if (item.image) {
+                resultHTML = resultHTML.replace(/\${image}/g, item.image);
+            } else {
+                resultHTML = resultHTML.replace(/\${image}/g, 'https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f');
+            }
+            
+            // Add to DOM
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = resultHTML;
+            searchResults.appendChild(tempDiv.firstElementChild);
+        });
+        
+        // Initialize Feather icons for new content
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+        
+        // Initialize lazy loading for new images
+        document.querySelectorAll('.search-result img.lazy-load').forEach(img => {
+            if ('loading' in HTMLImageElement.prototype) {
+                // Native lazy-loading
+                img.loading = 'lazy';
+                img.src = img.dataset.src;
+            } else if (window.IntersectionObserver) {
+                // Use existing lazy load script
+                // The main lazyload.js script should handle this
+            } else {
+                // Fallback for older browsers
+                img.src = img.dataset.src;
+            }
+        });
+    }
+});
+</script>
+{{ end }}
