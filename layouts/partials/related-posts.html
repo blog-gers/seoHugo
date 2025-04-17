@@ -1,0 +1,29 @@
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<div class="related-posts">
+    <h3 class="related-title">You might like</h3>
+    <div class="row">
+        {{ range . }}
+        <div class="col-md-4">
+            <div class="related-post">
+                <div class="related-image">
+                    {{ if .Params.image }}
+                    <a href="{{ .Permalink }}">
+                        <img data-src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-fluid lazy-load">
+                    </a>
+                    {{ else }}
+                    <a href="{{ .Permalink }}">
+                        <img data-src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f" alt="{{ .Title }}" class="img-fluid lazy-load">
+                    </a>
+                    {{ end }}
+                </div>
+                <h4 class="related-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                <div class="related-meta">
+                    <span class="related-date">{{ .Date.Format "January 2, 2006" }}</span>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

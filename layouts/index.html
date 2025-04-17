@@ -1,0 +1,21 @@
+{{ define "main" }}
+    <!-- Top Ad Banner -->
+    {{ partial "adsense.html" (dict "position" "top-banner") }}
+
+    <!-- Main Posts Loop -->
+    <div class="posts-list">
+        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+        {{ range $paginator.Pages }}
+            {{ partial "post-card.html" . }}
+        {{ end }}
+        
+        <!-- Middle Ad Banner -->
+        {{ partial "adsense.html" (dict "position" "middle-content") }}
+        
+        <!-- Pagination -->
+        {{ partial "pagination.html" . }}
+        
+        <!-- Bottom Ad Banner -->
+        {{ partial "adsense.html" (dict "position" "bottom-content") }}
+    </div>
+{{ end }}

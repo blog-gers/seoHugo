@@ -1,0 +1,15 @@
+<div class="author-bio">
+    <div class="author-image">
+        <img src="https://via.placeholder.com/100" alt="{{ .Params.author | default "Author" }}" class="rounded-circle">
+    </div>
+    <div class="author-content">
+        <h4 class="author-name">{{ .Params.author | default "Author" }}</h4>
+        <p class="author-desc">{{ if .Params.authorDescription }}{{ .Params.authorDescription }}{{ else }}Professional blogger and content creator who specializes in SEO and digital marketing topics.{{ end }}</p>
+        <div class="author-social">
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</div>

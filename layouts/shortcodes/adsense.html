@@ -1,0 +1,26 @@
+{{ if .Site.Params.adsensePublisherId }}
+    {{ $position := .Get "position" | default "inline" }}
+    <div class="ad-container ad-{{ $position }}">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+             data-ad-slot="{{ $position }}"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+{{ else }}
+    <!-- Ad placeholder when AdSense is not configured -->
+    {{ $position := .Get "position" | default "inline" }}
+    <div class="ad-container ad-{{ $position }} ad-placeholder">
+        <div class="ad-placeholder-inner">
+            <span class="ad-label">Advertisement Space</span>
+            <div class="ad-placeholder-content">
+                Add your AdSense Publisher ID to config.toml to display real ads
+            </div>
+        </div>
+    </div>
+{{ end }}

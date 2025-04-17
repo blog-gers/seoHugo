@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+    <!-- Header -->
+    {{ partial "header.html" . }}
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="row">
+            <!-- Content Area -->
+            <div class="col-md-8">
+                {{ block "main" . }}{{ end }}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                {{ partial "sidebar.html" . }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {{ partial "footer.html" . }}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    {{ range .Site.Params.customJS }}
+        <script src="{{ . | relURL }}"></script>
+    {{ end }}
+    
+    <!-- Initialize icons -->
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

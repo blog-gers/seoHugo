@@ -1,0 +1,21 @@
+{{ define "main" }}
+    <div class="posts-list">
+        <h1 class="archive-title">
+            {{ if eq .Data.Singular "tag" }}
+                Posts tagged "{{ .Title }}"
+            {{ else if eq .Data.Singular "category" }}
+                Posts in "{{ .Title }}" category
+            {{ else if eq .Data.Singular "author" }}
+                Posts by {{ .Title }}
+            {{ else }}
+                {{ .Title }}
+            {{ end }}
+        </h1>
+        
+        {{ range .Paginator.Pages }}
+            {{ partial "post-card.html" . }}
+        {{ end }}
+        
+        {{ partial "pagination.html" . }}
+    </div>
+{{ end }}

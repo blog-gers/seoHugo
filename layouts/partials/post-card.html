@@ -1,0 +1,42 @@
+<article class="post-card">
+    <div class="post-card-image">
+        {{ if .Params.image }}
+        <a href="{{ .Permalink }}">
+            <img data-src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="img-fluid lazy-load">
+        </a>
+        {{ else }}
+        <a href="{{ .Permalink }}">
+            <img data-src="https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f" alt="{{ .Title }}" class="img-fluid lazy-load">
+        </a>
+        {{ end }}
+    </div>
+    <div class="post-card-content">
+        <h2 class="post-card-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+        <div class="post-meta">
+            <span class="post-date">
+                <i data-feather="calendar"></i> 
+                {{ .Date.Format .Site.Params.dateFormat }}
+            </span>
+            {{ with .Params.author }}
+            <span class="post-author">
+                <i data-feather="user"></i> 
+                {{ . }}
+            </span>
+            {{ end }}
+            {{ with .Params.categories }}
+            <span class="post-category">
+                <i data-feather="folder"></i>
+                {{ range first 1 . }}
+                <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                {{ end }}
+            </span>
+            {{ end }}
+        </div>
+        <div class="post-excerpt">
+            {{ .Summary | truncate 150 }}
+        </div>
+        <a href="{{ .Permalink }}" class="read-more">Read More <i data-feather="arrow-right"></i></a>
+    </div>
+</article>

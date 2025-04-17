@@ -1,0 +1,78 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "SEO PRO - Professional Blogger Template"
+# Using theme components directly in layouts directory
+enableRobotsTXT = true
+paginate = 10
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
+
+[params]
+  description = "A professional SEO-optimized blog template for marketers and content creators"
+  images = ["img/og-image.jpg"]
+  mainSections = ["posts"]
+  logo = "SEO PRO" # Text logo (could be replaced with image)
+  copyright = "© 2023 SEO PRO. All rights reserved."
+  dateFormat = "January 2, 2006"
+  customCSS = ["css/style.css"]
+  customJS = ["js/main.js", "js/lazyload.js"]
+  lazyLoading = true
+  # Adsense (uncomment and replace with your own publisher ID)
+  # adsensePublisherId = "ca-pub-XXXXXXXXXXXXXXXX"
+  # Social Media
+  twitter = "seopro"
+  facebook = "seopro"
+  instagram = "seopro"
+  linkedin = "seopro"
+  pinterest = "seopro"
+  youtube = "seopro"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "features"
+    name = "Features"
+    url = "#"
+    weight = 2
+  [[menu.main]]
+    identifier = "mega menu"
+    name = "Mega Menu"
+    url = "#"
+    weight = 3
+  [[menu.main]]
+    identifier = "typography"
+    name = "Typography"
+    url = "#"
+    weight = 4
+  [[menu.main]]
+    identifier = "shortcodes"
+    name = "Shortcodes"
+    url = "#"
+    weight = 5
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]

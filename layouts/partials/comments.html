@@ -1,0 +1,63 @@
+<div class="comments-container">
+    <h3 class="comments-title">Comments</h3>
+    
+    <!-- Display sample comment for demonstration -->
+    <div class="comment-item">
+        <div class="comment-author">
+            <img src="https://via.placeholder.com/60" alt="John Doe" class="rounded-circle">
+            <div>
+                <h5 class="author-name">John Doe</h5>
+                <span class="comment-date">April 15, 2023</span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>This is a sample comment for demonstration purposes. In a real implementation, comments would be loaded from a database or API.</p>
+        </div>
+        <div class="comment-actions">
+            <a href="#comment-form" class="reply-btn">Reply</a>
+        </div>
+    </div>
+    
+    <div class="comment-item comment-reply">
+        <div class="comment-author">
+            <img src="https://via.placeholder.com/60" alt="Jane Smith" class="rounded-circle">
+            <div>
+                <h5 class="author-name">Jane Smith</h5>
+                <span class="comment-date">April 16, 2023</span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>Thank you for sharing your thoughts! This is a sample reply comment.</p>
+        </div>
+        <div class="comment-actions">
+            <a href="#comment-form" class="reply-btn">Reply</a>
+        </div>
+    </div>
+    
+    <!-- Comment Form -->
+    <div id="comment-form" class="comment-form-wrapper">
+        <h4 class="form-title">Post a Comment</h4>
+        <p class="form-note">To be published, comments must be reviewed by the administrator.</p>
+        <form class="comment-form">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" class="form-control" id="website">
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment *</label>
+                <textarea class="form-control" id="comment" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post a Comment</button>
+        </form>
+    </div>
+</div>

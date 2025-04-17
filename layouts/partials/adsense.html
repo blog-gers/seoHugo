@@ -1,0 +1,144 @@
+{{ if .Site.Params.adsensePublisherId }}
+    {{ $position := .position }}
+    
+    <div class="ad-container ad-{{ $position }}">
+        {{ if eq $position "header-banner" }}
+            <!-- Header Banner Ad -->
+            <div class="responsive-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="header-banner"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "top-banner" }}
+            <!-- Top Banner Ad -->
+            <div class="responsive-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="top-banner"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "sidebar" }}
+            <!-- Sidebar Ad -->
+            <div class="widget ad-widget">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="sidebar"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "sidebar-2" }}
+            <!-- Sidebar Ad (Second Position) -->
+            <div class="widget ad-widget">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="sidebar-2"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "before-content" }}
+            <!-- Before Content Ad -->
+            <div class="responsive-ad before-content-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="before-content"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "after-content" }}
+            <!-- After Content Ad -->
+            <div class="responsive-ad after-content-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="after-content"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "middle-content" }}
+            <!-- Middle Content Ad -->
+            <div class="responsive-ad middle-content-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="middle-content"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "bottom-content" }}
+            <!-- Bottom Content Ad -->
+            <div class="responsive-ad bottom-content-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="bottom-content"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ else if eq $position "footer-banner" }}
+            <!-- Footer Banner Ad -->
+            <div class="responsive-ad">
+                <span class="ad-label">Responsive Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="{{ .Site.Params.adsensePublisherId }}"
+                     data-ad-slot="footer-banner"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        {{ end }}
+    </div>
+{{ else }}
+    <!-- Ad placeholders when AdSense is not configured -->
+    {{ $position := .position }}
+    <div class="ad-container ad-{{ $position }} ad-placeholder">
+        <div class="ad-placeholder-inner">
+            <span class="ad-label">Advertisement Space</span>
+            <div class="ad-placeholder-content">
+                Add your AdSense Publisher ID to config.toml to display real ads
+            </div>
+        </div>
+    </div>
+{{ end }}

@@ -1,0 +1,70 @@
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="container">
+            <!-- Ad Banner in Footer -->
+            {{ partial "adsense.html" (dict "position" "footer-banner") }}
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-widget about-widget">
+                        <h3 class="widget-title">About Us</h3>
+                        <p>{{ .Site.Params.description }}</p>
+                        <div class="social-links">
+                            {{ with .Site.Params.facebook }}
+                            <a href="https://facebook.com/{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            {{ end }}
+                            {{ with .Site.Params.twitter }}
+                            <a href="https://twitter.com/{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            {{ end }}
+                            {{ with .Site.Params.instagram }}
+                            <a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                            {{ end }}
+                            {{ with .Site.Params.linkedin }}
+                            <a href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                            {{ end }}
+                            {{ with .Site.Params.pinterest }}
+                            <a href="https://pinterest.com/{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">Navigation</h3>
+                        <ul class="footer-menu">
+                            <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+                            <li><a href="{{ "about" | absURL }}">About</a></li>
+                            <li><a href="{{ "contact" | absURL }}">Contact Us</a></li>
+                            <li><a href="{{ "privacy" | absURL }}">Privacy Policy</a></li>
+                            <li><a href="{{ "terms" | absURL }}">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">Subscribe</h3>
+                        <p>Subscribe to our newsletter to get the latest updates.</p>
+                        <form class="subscribe-form">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">{{ .Site.Params.copyright | safeHTML }}</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p class="credits">Design by <a href="#">Blogger Templates</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

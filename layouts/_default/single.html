@@ -1,0 +1,73 @@
+{{ define "main" }}
+    <article class="post single-post">
+        <div class="post-header">
+            <h1 class="post-title">{{ .Title }}</h1>
+            <div class="post-meta">
+                <span class="post-date">
+                    <i data-feather="calendar"></i> 
+                    {{ .Date.Format .Site.Params.dateFormat }}
+                </span>
+                {{ with .Params.author }}
+                <span class="post-author">
+                    <i data-feather="user"></i> 
+                    {{ . }}
+                </span>
+                {{ end }}
+                {{ with .Params.categories }}
+                <span class="post-category">
+                    <i data-feather="folder"></i>
+                    {{ range . }}
+                        <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+                    {{ end }}
+                </span>
+                {{ end }}
+                <span class="post-comments">
+                    <i data-feather="message-square"></i>
+                    <a href="#comments">Comments</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- AdSense before content -->
+        {{ partial "adsense.html" (dict "position" "before-content") }}
+        
+        <!-- Table of Contents -->
+        {{ if .Params.toc }}
+        <div class="toc-container">
+            <div class="toc-header">Table of Contents</div>
+            {{ partial "toc.html" . }}
+        </div>
+        {{ end }}
+        
+        <div class="post-content">
+            {{ .Content }}
+        </div>
+        
+        <!-- AdSense after content -->
+        {{ partial "adsense.html" (dict "position" "after-content") }}
+        
+        <!-- Tags -->
+        {{ with .Params.tags }}
+        <div class="post-tags">
+            <span>Tags:</span>
+            {{ range . }}
+                <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+        
+        <!-- Social Share Buttons -->
+        {{ partial "social-share.html" . }}
+        
+        <!-- Author Bio -->
+        {{ partial "author.html" . }}
+        
+        <!-- Related Posts -->
+        {{ partial "related-posts.html" . }}
+        
+        <!-- Comments Section -->
+        <div id="comments" class="comments-section">
+            {{ partial "comments.html" . }}
+        </div>
+    </article>
+{{ end }}

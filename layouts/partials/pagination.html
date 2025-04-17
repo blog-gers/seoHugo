@@ -1,0 +1,40 @@
+{{ if gt .Paginator.TotalPages 1 }}
+<div class="pagination-wrapper">
+    <ul class="pagination">
+        {{ if .Paginator.HasPrev }}
+        <li class="page-item">
+            <a href="{{ .Paginator.Prev.URL }}" class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo; Previous</span>
+            </a>
+        </li>
+        {{ end }}
+        
+        {{ $pag := .Paginator }}
+        {{ $window := 2 }}
+        {{ $left := sub $pag.PageNumber $window }}
+        {{ $right := add $pag.PageNumber $window }}
+        {{ if lt $left 1 }}
+            {{ $left = 1 }}
+        {{ end }}
+        {{ if gt $right $pag.TotalPages }}
+            {{ $right = $pag.TotalPages }}
+        {{ end }}
+        
+        {{ range $pag.Pagers }}
+            {{ if and (ge .PageNumber $left) (le .PageNumber $right) }}
+                <li class="page-item{{ if eq . $pag }} active{{ end }}">
+                    <a href="{{ .URL }}" class="page-link">{{ .PageNumber }}</a>
+                </li>
+            {{ end }}
+        {{ end }}
+        
+        {{ if .Paginator.HasNext }}
+        <li class="page-item">
+            <a href="{{ .Paginator.Next.URL }}" class="page-link" aria-label="Next">
+                <span aria-hidden="true">Next &raquo;</span>
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}
