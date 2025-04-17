@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="600px" viewBox="0 0 1200 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SEO PRO Featured Image</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4C6EF5" offset="0%"></stop>
+            <stop stop-color="#3B5BDB" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F8F9FA" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background -->
+        <rect fill="url(#linearGradient-1)" x="0" y="0" width="1200" height="600"></rect>
+        
+        <!-- Website Mockup -->
+        <g transform="translate(150.000000, 100.000000)">
+            <!-- Browser Window -->
+            <rect fill="url(#linearGradient-2)" x="0" y="0" width="900" height="400" rx="8"></rect>
+            
+            <!-- Browser Header -->
+            <rect fill="#F1F3F5" x="0" y="0" width="900" height="40" rx="8 8 0 0"></rect>
+            
+            <!-- Browser Buttons -->
+            <circle fill="#FF6B6B" cx="20" cy="20" r="8"></circle>
+            <circle fill="#FFA94D" cx="44" cy="20" r="8"></circle>
+            <circle fill="#82C91E" cx="68" cy="20" r="8"></circle>
+            
+            <!-- Address Bar -->
+            <rect fill="#FFFFFF" x="100" y="10" width="700" height="20" rx="4"></rect>
+            
+            <!-- Navigation -->
+            <rect fill="#343A40" x="0" y="40" width="900" height="60"></rect>
+            
+            <!-- Logo -->
+            <text font-family="sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">
+                <tspan x="30" y="80">SEO PRO</tspan>
+            </text>
+            
+            <!-- Nav Items -->
+            <rect fill="#4C6EF5" x="150" y="60" width="80" height="20" rx="4"></rect>
+            <rect fill="#495057" x="250" y="60" width="80" height="20" rx="4"></rect>
+            <rect fill="#495057" x="350" y="60" width="80" height="20" rx="4"></rect>
+            
+            <!-- Search Icon -->
+            <circle fill="#FFFFFF" opacity="0.5" cx="850" cy="70" r="10"></circle>
+            
+            <!-- Content Area -->
+            <rect fill="#FFFFFF" x="30" y="120" width="540" height="250" rx="4"></rect>
+            
+            <!-- Post Title -->
+            <rect fill="#343A40" x="60" y="150" width="480" height="30" rx="4"></rect>
+            
+            <!-- Post Meta -->
+            <rect fill="#ADB5BD" x="60" y="190" width="200" height="15" rx="4"></rect>
+            
+            <!-- Post Content -->
+            <rect fill="#DEE2E6" x="60" y="220" width="480" height="10" rx="4"></rect>
+            <rect fill="#DEE2E6" x="60" y="240" width="480" height="10" rx="4"></rect>
+            <rect fill="#DEE2E6" x="60" y="260" width="450" height="10" rx="4"></rect>
+            <rect fill="#DEE2E6" x="60" y="280" width="470" height="10" rx="4"></rect>
+            <rect fill="#DEE2E6" x="60" y="300" width="460" height="10" rx="4"></rect>
+            <rect fill="#DEE2E6" x="60" y="320" width="400" height="10" rx="4"></rect>
+            
+            <!-- Sidebar -->
+            <rect fill="#F8F9FA" x="600" y="120" width="270" height="250" rx="4"></rect>
+            
+            <!-- Widget Title -->
+            <rect fill="#343A40" x="620" y="140" width="150" height="20" rx="4"></rect>
+            
+            <!-- Search Box -->
+            <rect fill="#FFFFFF" stroke="#DEE2E6" stroke-width="1" x="620" y="170" width="230" height="30" rx="4"></rect>
+            
+            <!-- Widget Content -->
+            <rect fill="#DEE2E6" x="620" y="220" width="230" height="40" rx="4"></rect>
+            <rect fill="#DEE2E6" x="620" y="270" width="230" height="40" rx="4"></rect>
+            <rect fill="#DEE2E6" x="620" y="320" width="230" height="20" rx="4"></rect>
+        </g>
+        
+        <!-- SEO Elements -->
+        <g transform="translate(600.000000, 50.000000)" fill="#FFFFFF">
+            <text font-family="sans-serif" font-size="60" font-weight="bold">
+                <tspan x="0" y="60">SEO PRO</tspan>
+            </text>
+            <text font-family="sans-serif" font-size="24" font-weight="normal" opacity="0.8">
+                <tspan x="5" y="100">Professional Blogger Template</tspan>
+            </text>
+        </g>
+        
+        <!-- Feature Icons -->
+        <g transform="translate(180.000000, 520.000000)" fill="#FFFFFF">
+            <!-- SEO Icon -->
+            <circle fill="#4C6EF5" opacity="0.2" cx="30" cy="30" r="30"></circle>
+            <text font-family="sans-serif" font-size="12" font-weight="bold">
+                <tspan x="12" y="34">SEO</tspan>
+            </text>
+            
+            <!-- Mobile Icon -->
+            <circle fill="#4C6EF5" opacity="0.2" cx="110" cy="30" r="30"></circle>
+            <rect x="100" y="15" width="20" height="30" rx="2" stroke="#FFFFFF" stroke-width="2"></rect>
+            
+            <!-- Speed Icon -->
+            <circle fill="#4C6EF5" opacity="0.2" cx="190" cy="30" r="30"></circle>
+            <path d="M190,15 L205,35 L190,35 L190,15 Z" fill="#FFFFFF"></path>
+            
+            <!-- AdSense Icon -->
+            <circle fill="#4C6EF5" opacity="0.2" cx="270" cy="30" r="30"></circle>
+            <text font-family="sans-serif" font-size="12" font-weight="bold">
+                <tspan x="252" y="34">ADS</tspan>
+            </text>
+            
+            <!-- Search Icon -->
+            <circle fill="#4C6EF5" opacity="0.2" cx="350" cy="30" r="30"></circle>
+            <circle cx="345" cy="25" r="8" stroke="#FFFFFF" stroke-width="2" fill="none"></circle>
+            <line x1="350" y1="32" x2="360" y2="42" stroke="#FFFFFF" stroke-width="2"></line>
+        </g>
+        
+        <!-- Main Tagline -->
+        <text font-family="sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+            <tspan x="600" y="530">SEO-Optimized • Mobile-Responsive • AdSense-Ready</tspan>
+        </text>
+    </g>
+</svg>

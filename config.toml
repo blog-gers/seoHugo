@@ -17,7 +17,7 @@ paginate = 10
   logo = "SEO PRO" # Text logo (could be replaced with image)
   copyright = "© 2023 SEO PRO. All rights reserved."
   dateFormat = "January 2, 2006"
-  customCSS = ["css/style.css", "css/search.css", "css/search-overlay.css"]
+  customCSS = ["css/style.css", "css/search.css", "css/search-overlay.css", "css/adsense.css"]
   customJS = ["js/main.js", "js/lazyload.js"]
   lazyLoading = true
   # Adsense (uncomment and replace with your own publisher ID)

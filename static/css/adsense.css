@@ -1,0 +1,121 @@
+/**
+ * SEO PRO - Professional AdSense Styles
+ */
+
+/* Ad Container Styles */
+.ad-container {
+    margin: 30px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Sidebar Ad Widgets */
+.widget.ad-widget {
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Ad Label Styling */
+.ad-label {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #6c757d;
+    text-transform: uppercase;
+}
+
+/* Responsive Ad Units */
+.responsive-ad {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+
+/* Positioning Specific Ads */
+.ad-header-banner {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.ad-top-banner {
+    margin: 0 0 30px 0;
+}
+
+.before-content-ad {
+    margin-bottom: 30px;
+}
+
+.after-content-ad {
+    margin-top: 30px;
+}
+
+.middle-content-ad {
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.ad-footer-banner {
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+
+/* Ad Placeholder Styling (when AdSense is not configured) */
+.ad-placeholder {
+    background: #f1f3f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px dashed #e9ecef;
+    overflow: hidden;
+}
+
+.ad-placeholder-inner {
+    text-align: center;
+    width: 100%;
+}
+
+.ad-placeholder-content {
+    color: #adb5bd;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+/* Special format for in-article ads */
+.in-article-ad {
+    margin: 30px auto;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Responsive Design for Ads */
+@media (max-width: 768px) {
+    .ad-container {
+        margin: 20px 0;
+    }
+    
+    .responsive-ad {
+        padding: 0;
+    }
+    
+    .ad-placeholder {
+        min-height: 80px;
+    }
+}
